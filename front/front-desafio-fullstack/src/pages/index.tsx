@@ -1,3 +1,4 @@
+import React from "react";
 import { UserData } from "@/schemas/user.schema";
 import { GetServerSideProps, NextPage } from "next";
 import api from "../services/api";
@@ -8,6 +9,8 @@ import { Router } from "next/router";
 import nookies from "nookies";
 import jwt_decode from "jwt-decode";
 import { ContactData } from "@/schemas/contact.schema";
+import { LiaPowerOffSolid } from "react-icons/lia";
+import { IconType } from "react-icons";
 
 interface HomeProps {
   user: UserData;
@@ -15,38 +18,41 @@ interface HomeProps {
 }
 
 const Home: NextPage<HomeProps> = ({ user, contacts }) => {
-  console.log("user:", user);
-
+  const logOutButton: IconType = LiaPowerOffSolid;
   return (
     <main
-      className={`body justify-center flex min-h-screen flex-col items-center p-24`}
+      className={`body-main justify-between flex flex-col min-h-screen items-center py-10`}
     >
-      <div>
-        <button
-          className={`m-8 px-3 h-auto w-auto text-2xl bg-pink-800 rounded-lg`}
-          onClick={() => {
-            router.push({
-              pathname: "/contacts",
-              query: {
-                context: "add",
-              },
-            });
-          }}
-        >
-          Adicionar Contato
-        </button>
-        <button
-          className={`m-8 px-3 h-auto w-auto text-2xl bg-pink-800 rounded-lg`}
-          onClick={() => {
-            nookies.destroy(null, "fullstackProject.token", { path: "/" });
-            router.push("/login");
-          }}
-        >
-          Logout
-        </button>
+      <div className="user-form-container p-0 min-h-[300px]">
+        <UserCard key={user.id} user={user}></UserCard>
+        <div className="flex flex-col items-center ">
+          <button
+            className="user-form-button w-auto m-0"
+            onClick={() => {
+              router.push({
+                pathname: "/contacts",
+                query: {
+                  context: "add",
+                },
+              });
+            }}
+          >
+            Adicionar novo contato
+          </button>
+          <button
+            className="user-form-button text-2xl w-auto mt-10 hover:text-red-600"
+            onClick={() => {
+              nookies.destroy(null, "fullstackProject.token", { path: "/" });
+              router.push("/login");
+            }}
+          >
+            {React.createElement(logOutButton)}
+          </button>
+        </div>
       </div>
-      <UserCard key={user.id} user={user}></UserCard>
-      <div className={`m-4 flex flex-wrap flex-row`}>
+      <div
+        className={`desktop:w-[80%] desktop:max-w-[976px] desktop:mx-auto desktop:flex desktop:flex-wrap desktop:flex-row desktop:items-start gap-2 mt-16`}
+      >
         {contacts.map((item: ContactData) => (
           <ContactCard key={item.id} contact={item}></ContactCard>
         ))}

@@ -19,14 +19,12 @@ const RegisterForm = () => {
   const { register: registerUser } = useAuth();
 
   const onFormSubmit = (FormData: RegisterUserData) => {
-    console.log("teste");
     registerUser(FormData);
-    console.log(FormData);
   };
 
   return (
     <div className="user-form-container">
-      <p className="text-4xl mt-6 font-semibold">Fazer cadastro</p>
+      <p className="text-4xl mt-6 font-semibold">CADASTRO</p>
       <form className="space-y-6 w-4/5" onSubmit={handleSubmit(onFormSubmit)}>
         <div>
           <label htmlFor="name" className="user-form-label">
@@ -37,6 +35,7 @@ const RegisterForm = () => {
               type="text"
               placeholder="Seu Nome"
               className="user-form-input"
+              autoComplete="off"
               {...register("name")}
             />
           </div>
@@ -50,6 +49,7 @@ const RegisterForm = () => {
               type="text"
               placeholder="Seu Email"
               className="user-form-input"
+              autoComplete="off"
               {...register("email")}
             />
           </div>
@@ -63,6 +63,7 @@ const RegisterForm = () => {
               type="text"
               placeholder="Seu Telefone"
               className="user-form-input"
+              autoComplete="off"
               {...register("telefone")}
             />
           </div>
@@ -80,9 +81,9 @@ const RegisterForm = () => {
             />
           </div>
         </div>
-        <div>
+        <div className="flex justify-center">
           <button type="submit" className="user-form-button">
-            Cadastrar
+            CADASTRAR
           </button>
         </div>
         <Link href={"/login "} className="user-form-link">

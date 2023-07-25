@@ -29,12 +29,12 @@ const AddContactForm = ({ context = "add", id }: IContactFormProps) => {
   });
 
   const labelButton = {
-    add: "Adicionar Contato",
-    update: "Atualizar Contato",
+    add: "Adicionar",
+    update: "Atualizar",
   }[context];
   const labelTitle = {
-    add: "Adicionar Contato",
-    update: "Atualizar Contato",
+    add: "Adicionar",
+    update: "Atualizar",
   }[context];
 
   const onFormSubmit = (formData: AddContactData | UpdateContactData) => {
@@ -56,8 +56,9 @@ const AddContactForm = ({ context = "add", id }: IContactFormProps) => {
           <div className="mt-2">
             <input
               type="text"
-              placeholder="Seu Nome"
+              placeholder="Nome do contato"
               className="user-form-input"
+              autoComplete="off"
               {...register("name")}
             />
           </div>
@@ -69,8 +70,9 @@ const AddContactForm = ({ context = "add", id }: IContactFormProps) => {
           <div className="mt-2">
             <input
               type="text"
-              placeholder="Seu Email"
+              placeholder="Email do contato"
               className="user-form-input"
+              autoComplete="off"
               {...register("email")}
             />
           </div>
@@ -82,13 +84,14 @@ const AddContactForm = ({ context = "add", id }: IContactFormProps) => {
           <div className="mt-2">
             <input
               type="text"
-              placeholder="Seu Telefone"
+              placeholder="Telefone do contato"
               className="user-form-input"
+              autoComplete="off"
               {...register("telefone")}
             />
           </div>
         </div>
-        <div>
+        <div className="flex justify-center">
           <button type="submit" className="user-form-button">
             {labelButton}
           </button>

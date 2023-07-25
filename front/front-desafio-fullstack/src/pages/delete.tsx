@@ -8,25 +8,27 @@ const Delete: NextPage = () => {
 
   const { deleteContact } = useAuth();
   return (
-    <main className="body min-h-screen flex items-center justify-center">
-      <h1> Deseja realmente deletar esse contato?</h1>
-      <button
-        className={`m-8 px-3 h-auto w-auto text-2xl bg-red-600 rounded-lg`}
-        onClick={() => {
-          deleteContact(router.query.id);
-          router.push("/");
-        }}
-      >
-        SIM
-      </button>
-      <button
-        className={`m-8 px-3 h-auto w-auto text-2xl bg-green-600 rounded-lg`}
-        onClick={() => {
-          router.push("/");
-        }}
-      >
-        NÃO
-      </button>
+    <main className="body-main min-h-screen flex items-center justify-center">
+      <div className="w-auto h-auto bg-black p-2 flex flex-row items-center justify-center rounded-md gap-4">
+        <h1 className="text-white"> Deseja realmente deletar esse contato?</h1>
+        <button
+          className={`px-3 h-auto w-auto text-2xl bg-red-600 rounded-lg`}
+          onClick={() => {
+            deleteContact(router.query.id);
+            router.push("/");
+          }}
+        >
+          SIM
+        </button>
+        <button
+          className={`px-3 h-auto w-auto text-2xl bg-green-600 rounded-lg`}
+          onClick={() => {
+            router.push("/");
+          }}
+        >
+          NÃO
+        </button>
+      </div>
     </main>
   );
 };

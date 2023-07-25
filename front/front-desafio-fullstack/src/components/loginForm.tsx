@@ -13,12 +13,11 @@ const LoginForm = () => {
 
   const onFormSubmit = (formData: LoginData) => {
     login(formData);
-    console.log(formData);
   };
 
   return (
     <div className="user-form-container">
-      <p className="text-4xl mt-6 font-semibold">Fazer Login</p>
+      <p className="text-4xl mt-6 font-semibold">LOGIN</p>
       <form className="space-y-6 w-4/5" onSubmit={handleSubmit(onFormSubmit)}>
         <div>
           <label htmlFor="email" className="user-form-label">
@@ -27,8 +26,9 @@ const LoginForm = () => {
           <div className="mt-2">
             <input
               type="text"
-              placeholder="example@.com"
+              placeholder="examplo@mail.com"
               className="user-form-input"
+              autoComplete="off"
               {...register("email")}
             />
           </div>
@@ -46,9 +46,9 @@ const LoginForm = () => {
             />
           </div>
         </div>
-        <div>
+        <div className="flex justify-center">
           <button type="submit" className="user-form-button">
-            Entrar
+            ENTRAR
           </button>
         </div>
         <Link href={"/register "} className="user-form-link">

@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 const Contacts: NextPage = () => {
   const router = useRouter();
   return (
-    <main className="body min-h-screen flex items-center justify-center">
+    <main className="body-main">
       <AddContactForm context={router.query.context} id={router.query.id} />
     </main>
   );
